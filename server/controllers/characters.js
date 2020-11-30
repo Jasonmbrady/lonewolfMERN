@@ -1,29 +1,29 @@
 const mongoose = require("mongoose");
-const Page = mongoose.model("Page");
+const Character = mongoose.model("Character");
 
 module.exports = {
     getAll: (req, res) => {
-        Page.find()
-            .then(Pages => res.json(Pages))
+        Character.find()
+            .then(Characters => res.json(Characters))
             .catch(err => res.status(400).json(err))
     },
     getOne: (req, res) => {
-        Page.findOne({ _id: req.params.id })
-            .then(Page => res.json(Page))
+        Character.findOne({ _id: req.params.id })
+            .then(Character => res.json(Character))
             .catch(err => res.status(400).json(err))
     },
     create: (req, res) => {
-        Page.create(req.body)
-            .then(newPage => res.json(newPage))
+        Character.create(req.body)
+            .then(newCharacter => res.json(newCharacter))
             .catch(err => res.status(400).json(err))
     },
     update: (req, res) => {
-        Page.findOneAndUpdate({ _id: req.params.id }, req.body)
-            .then(updatedPage => res.json(updatedPage))
+        Character.findOneAndUpdate({ _id: req.params.id }, req.body)
+            .then(updatedCharacter => res.json(updatedCharacter))
             .catch(err => res.status(400).json(err))
     },
     delete: (req, res) => {
-        Page.deleteOne({ _id: req.params.id })
+        Character.deleteOne({ _id: req.params.id })
             .then(response => console.log(response))
             .catch(err => res.status(400).json(err))
     }
